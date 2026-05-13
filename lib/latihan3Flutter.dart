@@ -33,13 +33,14 @@ class registrasiCatalogCare extends StatelessWidget {
       
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          spacing: 15,
-          children: [
-                  SizedBox(height: 8),
-            Text("Nama"),
-            TextField(
+        child: SingleChildScrollView(
+            child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 10,
+              children: [
+              SizedBox(height: 10),
+              Text("Nama"),
+              TextField(
               decoration: InputDecoration(
                 hintText: "Masukkan Nama Anda",
                 filled: true,
@@ -98,9 +99,180 @@ class registrasiCatalogCare extends StatelessWidget {
                 prefixIcon: Icon(Icons.key),
               ),
             ),
-          ],
+            GridView.count(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                crossAxisCount: 3,
+                mainAxisSpacing: 2,
+                crossAxisSpacing: 2,
+
+                children: [
+                  Stack(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(11),
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/Micellar.png"),
+                            fit: BoxFit.cover,
+                            ),
+                        ),
+                      ),
+                     Positioned(
+                        bottom: 6,
+                        left: 0,
+                        right: 0,
+                        child: Text(
+                          "Micellar",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                      
+                  Stack(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(11),
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/Fw.png"),
+                            fit: BoxFit.cover,
+                            ),
+                        ),
+                      ),
+                     Positioned(
+                        bottom: 6,
+                        left: 0,
+                        right: 0,
+                        child: Text(
+                          "FaceWash",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+
+                    Stack(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(11),
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/Moist.avif"),
+                            fit: BoxFit.cover,
+                            ),
+                        ),
+                      ),
+                     Positioned(
+                        bottom: 6,
+                        left: 0,
+                        right: 0,
+                        child: Text(
+                          "Moistur",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Stack(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(11),
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/Serum.jpg"),
+                            fit: BoxFit.cover,
+                            ),
+                        ),
+                      ),
+                     Positioned(
+                        bottom: 6,
+                        left: 0,
+                        right: 0,
+                        child: Text(
+                          "Serum",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Stack(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(11),
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/SunScreen.avif"),
+                            fit: BoxFit.cover,
+                            ),
+                        ),
+                      ),
+                     Positioned(
+                        bottom: 6,
+                        left: 0,
+                        right: 0,
+                        child: Text(
+                          "Suns Screen",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Stack(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(11),
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/Toner.png"),
+                            fit: BoxFit.cover,
+                            ),
+                        ),
+                      ),
+                     Positioned(
+                        bottom: 6,
+                        left: 0,
+                        right: 0,
+                        child: Text(
+                          "Toner",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  
+                ],
+              ),
+
+            ],
+          ),
         ),
-        ),
+      ),
     );
   }
 }
