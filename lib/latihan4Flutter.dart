@@ -86,7 +86,41 @@ class dataUser extends StatelessWidget {
               ),
             ),
 
-            
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text("Faris"),
+              subtitle: Text("Kulit Berminyak"),
+            ),
+
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text("Farel"),
+              subtitle: Text("Kulit Kering"),
+            ),
+
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text("Faiz"),
+              subtitle: Text("Kulit Sensitif"),
+            ),
+
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text("Firman"),
+              subtitle: Text("Kulit Kombinasi"),
+            ),
+
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text("Fatih"),
+              subtitle: Text("Kulit Normal"),
+            ),
+
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text("Fahri"),
+              subtitle: Text("Kulit Normal"),
+            ),
           ],
         ),
       ),
