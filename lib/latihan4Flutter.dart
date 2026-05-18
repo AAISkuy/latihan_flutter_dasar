@@ -72,19 +72,6 @@ class dataUser extends StatelessWidget {
                 prefixIcon: Icon(Icons.key),
               ),
             ),
-            SizedBox(height: 20),
-
-            TextField(
-              obscureText: true,
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: const Color.fromARGB(255, 207, 207, 207),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                prefixIcon: Icon(Icons.key),
-              ),
-            ),
 
             ListTile(
               leading: Icon(Icons.person),
