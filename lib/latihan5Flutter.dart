@@ -55,16 +55,32 @@ class _logikaVisualState extends State<logikaVisual> {
             ),
 
             showImageS
-                ? Image.asset("assets/images/SunScreen.avif", height: 150)
-                : Container(height: 10),
+                ? GestureDetector(
+                    onTap: () {
+                      print("Menekan Gambar Sunscreen ");
+                    },
+                    onLongPress: () {
+                      print("Menekan Gambar Sunscreen yang Lama");
+                    },
 
-            Text(
-              like ? "Suka" : "Tidak Suka",
-              style: TextStyle(
-                fontSize: 25,
-                color: like ? Colors.red : Colors.black,
-              ),
-            ),
+                    onDoubleTap: () {
+                      print("Menekan Gambar Sunscreen 2 kali");
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Image.asset(
+                        "assets/images/SunScreen.avif",
+                        height: 150,
+                      ),
+                    ),
+                  )
+                : Text(
+                    like ? "Suka" : "Tidak Suka",
+                    style: TextStyle(
+                      fontSize: 25,
+                      color: like ? Colors.red : Colors.black,
+                    ),
+                  ),
             IconButton(
               onPressed: () {
                 setState(() {
