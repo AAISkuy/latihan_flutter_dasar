@@ -8,13 +8,14 @@ class logikaVisual extends StatefulWidget {
 }
 
 class _logikaVisualState extends State<logikaVisual> {
+  int nilaiPenghitung = 0;
   bool showImageT = false;
   bool showImageS = false;
   bool like = false;
   bool Ltext = false;
   @override
   Widget build(BuildContext context) {
-    print('Ujicoba');
+    print('cobalagi');
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -78,8 +79,39 @@ class _logikaVisualState extends State<logikaVisual> {
             ),
 
             showImageT
-                ? Image.asset("assets/images/Toner.png", height: 150)
+                ? InkWell(
+                    splashColor: Colors.red,
+                    onTap: () {
+                      nilaiPenghitung++;
+                      setState(() {});
+                      print(
+                        "Tekan gambar toner Nilai saat ini adalah : $nilaiPenghitung",
+                      );
+                    },
+                    onLongPress: () {
+                      nilaiPenghitung += 3;
+                      setState(() {});
+                      print(
+                        "Tekan gambar lama toner Nilai saat ini adalah : $nilaiPenghitung",
+                      );
+                    },
+                    onDoubleTap: () {
+                      nilaiPenghitung += 2;
+                      setState(() {});
+                      print(
+                        "Tekan gambar 2 kali toner Nilai saat ini adalah : $nilaiPenghitung",
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Image.asset(
+                        "assets/images/Toner.png",
+                        height: 150,
+                      ),
+                    ),
+                  )
                 : Container(height: 10),
+
             IconButton(
               onPressed: () {
                 setState(() {
@@ -87,15 +119,6 @@ class _logikaVisualState extends State<logikaVisual> {
                 });
               },
               icon: Icon(showImageT ? Icons.visibility_off : Icons.visibility),
-            ),
-
-            TextButton(
-              onPressed: () {
-                setState(() {
-                  Ltext = !Ltext;
-                });
-              },
-              child: Text("Tekan Disini Untuk Informasi Detail"),
             ),
             Text(
               Ltext
@@ -109,8 +132,12 @@ class _logikaVisualState extends State<logikaVisual> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.person),
+        onPressed: () {
+          nilaiPenghitung--;
+          setState(() {});
+          print("Nilai saat ini berkurang menjadi: $nilaiPenghitung");
+        },
+        child: Icon(Icons.minimize),
       ),
     );
   }
