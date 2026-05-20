@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class formLanding extends StatefulWidget {
-  const formLanding({super.key});
-
+class Formlanding extends StatefulWidget {
+  const Formlanding({super.key});
+  static const String routeName = "/landing";
   @override
-  State<formLanding> createState() => form_Landing();
+  State<Formlanding> createState() => FormLanding();
 }
 
-class form_Landing extends State<formLanding> {
+class FormLanding extends State<Formlanding> {
   bool Next = false;
   @override
   Widget build(BuildContext context) {

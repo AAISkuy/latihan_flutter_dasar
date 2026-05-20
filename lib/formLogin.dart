@@ -1,13 +1,15 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class formLogin extends StatefulWidget {
-  const formLogin({super.key});
+class Formlogin extends StatefulWidget {
+  const Formlogin({super.key});
+  static const String routeName = "/signin";
 
   @override
-  State<formLogin> createState() => _formLoginState();
+  State<Formlogin> createState() => _FormloginState();
 }
 
-class _formLoginState extends State<formLogin> {
+class _FormloginState extends State<Formlogin> {
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -162,7 +164,10 @@ class _formLoginState extends State<formLogin> {
                                       actions: [
                                         TextButton(
                                           onPressed: () {
-                                            Navigator.pop(context);
+                                            Navigator.pushNamed(
+                                              context,
+                                              "/landing",
+                                            );
                                           },
                                           child: Text("Lanjut"),
                                         ),
@@ -185,7 +190,73 @@ class _formLoginState extends State<formLogin> {
                         ),
                       ),
 
+                      SizedBox(height: 10),
                       Center(child: Text("OR")),
+
+                      Container(
+                        margin: EdgeInsets.fromLTRB(20, 10, 20, 0),
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                print("Sudah memenuhi syarat");
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return AlertDialog(
+                                      title: Text("Berhasil"),
+                                      content: Text("Anda berhasil login"),
+                                      actions: [
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text("Lanjut"),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
+                            },
+
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Color(0xFF7C9A92),
+                            ),
+
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  "assets/images/google.png",
+                                  width: 20,
+                                ),
+                                Text(
+                                  "   Continue with Google",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      Center(
+                        child: Text.rich(
+                          TextSpan(
+                            text: "New to CareSkin+?",
+                            children: [
+                              TextSpan(
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () => Navigator.pop(context),
+                                text: " Create an account",
+                                style: TextStyle(color: Color(0xFF7C9A92)),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ],
