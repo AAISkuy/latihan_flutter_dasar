@@ -166,7 +166,7 @@ class _FormloginState extends State<Formlogin> {
                                           onPressed: () {
                                             Navigator.pushNamed(
                                               context,
-                                              "/landing",
+                                              "/latihnavbar",
                                             );
                                           },
                                           child: Text("Lanjut"),

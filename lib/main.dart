@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:latihan_flutter_dasar/formLanding.dart';
 import 'package:latihan_flutter_dasar/formLogin.dart';
+import 'package:latihan_flutter_dasar/latihan7Flutter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,7 +37,8 @@ class MyApp extends StatelessWidget {
 
       routes: {
         Formlogin.routeName: (context) => const Formlogin(),
-        Formlanding.routeName: (context) => const Formlanding(),
+        // Formlanding.routeName: (context) => const Formlanding(),
+        NavigasiDrawer.routeName: (context) => const NavigasiDrawer(),
       },
     );
   }
