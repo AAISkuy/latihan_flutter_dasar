@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class NavigasiDrawer extends StatefulWidget {
   const NavigasiDrawer({super.key});
@@ -12,6 +13,9 @@ class NavigasiDrawerState extends State<NavigasiDrawer> {
   bool isChecked = false;
   bool isOn = false;
   int _selectedIndex = 0;
+  String? selected;
+  DateTime? selectedDate;
+  TimeOfDay? selectedTime;
 
   static const List<Widget> _widgetOptions = <Widget>[
     Text('Home'),
@@ -90,30 +94,123 @@ class NavigasiDrawerState extends State<NavigasiDrawer> {
         ),
       ),
 
-      body: Center(
-        child: Column(
+      body: Container(
+        padding: EdgeInsets.all(16),
+        child: ListView(
           children: [
-            SizedBox(height: 30),
-            Checkbox(
-              value: isChecked,
-              onChanged: (bool? newValue) {
-                setState(() {
-                  isChecked = newValue ?? false;
-                });
-              },
-            ),
-            Text(isChecked ? 'Begini caranya bro' : 'Teken tombolnya bang'),
+            Column(
+              children: [
+                SizedBox(height: 20),
+                TextField(
+                  decoration: InputDecoration(
+                    hintText: "Masukkan Nama Anda",
+                    filled: true,
+                    fillColor: const Color.fromARGB(255, 207, 207, 207),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    prefixIcon: Icon(Icons.person),
+                  ),
+                ),
+                SizedBox(height: 10),
+                Checkbox(
+                  value: isChecked,
+                  onChanged: (bool? newValue) {
+                    setState(() {
+                      isChecked = newValue ?? false;
+                    });
+                  },
+                ),
+                Text(isChecked ? 'Begini caranya bro' : 'Teken tombolnya bang'),
 
-            SizedBox(height: 30),
-            Switch(
-              value: isOn,
-              onChanged: (val) {
-                setState(() {
-                  isOn = val;
-                });
-              },
+                SizedBox(height: 20),
+                Switch(
+                  value: isOn,
+                  onChanged: (val) {
+                    setState(() {
+                      isOn = val;
+                    });
+                  },
+                ),
+                Text(isOn ? 'Aktifkan Mode Teramg' : 'Aktifkan Mode Gelap'),
+
+                const SizedBox(height: 30),
+
+                DropdownButton<String>(
+                  value: selected,
+                  hint: const Text("Domisili"),
+
+                  items:
+                      [
+                        'Jakarta Pusat',
+                        'Jakarta Barat',
+                        'Jakarta Utara',
+                        'Jakarta Timur',
+                      ].map((String val) {
+                        return DropdownMenuItem<String>(
+                          value: val,
+                          child: Text(val),
+                        );
+                      }).toList(),
+
+                  onChanged: (val) {
+                    setState(() {
+                      selected = val;
+                    });
+                  },
+                ),
+
+                SizedBox(height: 30),
+
+                ElevatedButton(
+                  onPressed: () async {
+                    final DateTime? picked = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2000),
+                      lastDate: DateTime(2100),
+                    );
+
+                    if (picked != null) {
+                      setState(() {
+                        selectedDate = picked;
+                      });
+                    }
+                  },
+
+                  child: const Text('Silahkan memilih Tanggal'),
+                ),
+
+                Text(
+                  selectedDate == null
+                      ? "Belum pilih tanggal"
+                      : DateFormat(
+                          'EEE, dd MMMM yyyy',
+                          'id_ID',
+                        ).format(selectedDate!),
+                ),
+                SizedBox(height: 30),
+                ElevatedButton(
+                  onPressed: () async {
+                    final TimeOfDay? picked = await showTimePicker(
+                      context: context,
+                      initialTime: TimeOfDay.now(),
+                    );
+                    if (picked != null) {
+                      setState(() {
+                        selectedTime = picked;
+                      });
+                    }
+                  },
+                  child: Text('Silahkan memilih Jam'),
+                ),
+                Text(
+                  selectedTime == null
+                      ? "Anda belum memilih jam"
+                      : "${selectedTime!.hour}:${selectedTime!.minute}",
+                ),
+              ],
             ),
-            Text(isOn ? 'On' : 'Off'),
           ],
         ),
       ),
