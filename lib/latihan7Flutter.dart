@@ -18,16 +18,22 @@ class NavigasiDrawerState extends State<NavigasiDrawer> {
   TimeOfDay? selectedTime;
 
   static const List<Widget> _widgetOptions = <Widget>[
-    Text('Home'),
-    Text('Settings Page'),
-    Text('Profile Page'),
+    Text('Index 0: Home'),
+    Text('Index 1: Settings Page'),
+    Text('Index 2: Profile Page'),
   ];
 
-  void _onItemTapped(int index) {
+  void _onDrawerTapped(int index) {
     setState(() {
       _selectedIndex = index;
     });
-    Navigator.pop(context); // Close the drawer
+    Navigator.pop(context);
+  }
+
+  void _onBottomNavTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 
   @override
@@ -72,7 +78,7 @@ class NavigasiDrawerState extends State<NavigasiDrawer> {
               ),
               selected: _selectedIndex == 0,
               onTap: () {
-                _onItemTapped(0);
+                _onDrawerTapped(0);
               },
             ),
 
@@ -87,7 +93,7 @@ class NavigasiDrawerState extends State<NavigasiDrawer> {
               ),
               selected: _selectedIndex == 1,
               onTap: () {
-                _onItemTapped(1);
+                _onDrawerTapped(1);
               },
             ),
           ],
@@ -213,6 +219,19 @@ class NavigasiDrawerState extends State<NavigasiDrawer> {
             ),
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: _onBottomNavTapped,
       ),
     );
   }
