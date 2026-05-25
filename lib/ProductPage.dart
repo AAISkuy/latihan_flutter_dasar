@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
-class Productpage extends StatelessWidget {
+class Productpage extends StatefulWidget {
   const Productpage({super.key});
 
   @override
+  State<Productpage> createState() => _ProductpageState();
+}
+
+class _ProductpageState extends State<Productpage> {
+  @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Halaman Product'));
+    return Container();
   }
 }
