@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:latihan_flutter_dasar/formLogin.dart';
-import 'package:latihan_flutter_dasar/latihan7Flutter.dart';
+import 'package:latihan_flutter_dasar/latihan7dan8Flutter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
