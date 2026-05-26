@@ -1,5 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:latihan_flutter_dasar/Tugashome10.dart';
+import 'package:latihan_flutter_dasar/extension.dart';
 
 class Formlogin extends StatefulWidget {
   const Formlogin({super.key});
@@ -11,6 +13,8 @@ class Formlogin extends StatefulWidget {
 
 class _FormloginState extends State<Formlogin> {
   final _formKey = GlobalKey<FormState>();
+  final emailcontroller = TextEditingController();
+  final passwordcontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -78,6 +82,7 @@ class _FormloginState extends State<Formlogin> {
                       Container(
                         margin: EdgeInsets.fromLTRB(20, 10, 20, 0),
                         child: TextFormField(
+                          controller: emailcontroller,
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.email),
                             hintText: "Masukkan Email Anda",
@@ -104,6 +109,7 @@ class _FormloginState extends State<Formlogin> {
                       Container(
                         margin: EdgeInsets.fromLTRB(20, 10, 20, 0),
                         child: TextFormField(
+                          controller: passwordcontroller,
                           obscureText: true,
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.key),
@@ -164,10 +170,17 @@ class _FormloginState extends State<Formlogin> {
                                       actions: [
                                         TextButton(
                                           onPressed: () {
-                                            Navigator.pushNamed(
-                                              context,
-                                              "/latihnavbar",
+                                            context.push(
+                                              Tugashome(
+                                                password:
+                                                    passwordcontroller.text,
+                                                email: emailcontroller.text,
+                                              ),
                                             );
+                                            // Navigator.pushNamed(
+                                            //   context,
+                                            //   "/latihnavbar",
+                                            // );
                                           },
                                           child: Text("Lanjut"),
                                         ),
