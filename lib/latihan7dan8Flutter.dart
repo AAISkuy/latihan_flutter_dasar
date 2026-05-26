@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:latihan_flutter_dasar/HomePage.dart';
-import 'package:latihan_flutter_dasar/productpage.dart';
+import 'package:latihan_flutter_dasar/views/list.dart';
+import 'package:latihan_flutter_dasar/views/list_with_map.dart';
+import 'package:latihan_flutter_dasar/views/list_with_model.dart';
 
 class NavigasiDrawer extends StatefulWidget {
   const NavigasiDrawer({super.key});
@@ -18,7 +20,12 @@ class NavigasiDrawerState extends State<NavigasiDrawer> {
   DateTime? selectedDate;
   TimeOfDay? selectedTime;
 
-  final List<Widget> _pages = [const HomePage(), const Productpage()];
+  final List<Widget> _pages = [
+    const HomePage(),
+    const ListDataSkin(),
+    const ListWithMapDataSkin(),
+    const ListWithModelDataSkin(),
+  ];
 
   void _onDrawerTapped(int index) {
     setState(() {
@@ -64,6 +71,7 @@ class NavigasiDrawerState extends State<NavigasiDrawer> {
                 ),
               ),
             ),
+
             ListTile(
               leading: const Icon(Icons.home),
               title: const Text(
@@ -80,9 +88,9 @@ class NavigasiDrawerState extends State<NavigasiDrawer> {
             ),
 
             ListTile(
-              leading: const Icon(Icons.person),
+              leading: const Icon(Icons.shopping_bag),
               title: const Text(
-                "Product",
+                "List",
                 style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
@@ -93,6 +101,36 @@ class NavigasiDrawerState extends State<NavigasiDrawer> {
                 _onDrawerTapped(1);
               },
             ),
+
+            ListTile(
+              leading: const Icon(Icons.shopping_bag),
+              title: const Text(
+                "List Map",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              selected: _selectedIndex == 2,
+              onTap: () {
+                _onDrawerTapped(2);
+              },
+            ),
+
+            ListTile(
+              leading: const Icon(Icons.shopping_bag),
+              title: const Text(
+                "List Product",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              selected: _selectedIndex == 3,
+              onTap: () {
+                _onDrawerTapped(3);
+              },
+            ),
           ],
         ),
       ),
@@ -101,15 +139,24 @@ class NavigasiDrawerState extends State<NavigasiDrawer> {
 
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
+        backgroundColor: Color.fromARGB(255, 253, 243, 213),
         selectedItemColor: Colors.amber,
+        unselectedItemColor: Colors.blueGrey,
         onTap: _onBottomNavTapped,
 
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_bag),
-            label: "Product",
+            label: "list",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_bag),
+            label: "list Map",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_bag),
+            label: "list Model",
           ),
         ],
       ),

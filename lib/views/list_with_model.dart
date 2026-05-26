@@ -30,9 +30,9 @@ class _ListWithModelDataSkinState extends State<ListWithModelDataSkin> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.spa, size: 50, color: Color(0xFFFADADD)),
+                    Icon(Icons.spa, size: 30, color: Color(0xFFFADADD)),
 
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 6),
 
                     Text(
                       data.brand,
@@ -43,7 +43,7 @@ class _ListWithModelDataSkinState extends State<ListWithModelDataSkin> {
                       ),
                     ),
 
-                    const SizedBox(height: 6),
+                    const SizedBox(height: 5),
 
                     Text(
                       data.productName,
@@ -51,17 +51,25 @@ class _ListWithModelDataSkinState extends State<ListWithModelDataSkin> {
                       style: const TextStyle(fontSize: 14),
                     ),
 
-                    const SizedBox(height: 6),
+                    const SizedBox(height: 5),
 
                     Text(
                       data.category,
                       style: const TextStyle(
-                        fontSize: 13,
+                        fontSize: 10,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
 
-                    const SizedBox(height: 6),
+                    Text(
+                      data.benefit,
+                      style: const TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+
+                    const SizedBox(height: 5),
 
                     Text(data.skinType, style: const TextStyle(fontSize: 12)),
                   ],

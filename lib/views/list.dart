@@ -24,6 +24,7 @@ class _ListDataSkinState extends State<ListDataSkin> {
     'Laneige',
     'Cetaphil',
   ];
+
   @override
   Widget build(BuildContext context) {
     return Column(
