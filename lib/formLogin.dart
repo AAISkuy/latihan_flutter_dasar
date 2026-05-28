@@ -1,7 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:latihan_flutter_dasar/Tugashome10.dart';
-import 'package:latihan_flutter_dasar/extension.dart';
+import 'package:latihan_flutter_dasar/Registrasi.dart';
 
 class Formlogin extends StatefulWidget {
   const Formlogin({super.key});
@@ -13,8 +12,8 @@ class Formlogin extends StatefulWidget {
 
 class _FormloginState extends State<Formlogin> {
   final _formKey = GlobalKey<FormState>();
-  final emailcontroller = TextEditingController();
-  final passwordcontroller = TextEditingController();
+  // final emailcontroller = TextEditingController();
+  // final passwordcontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +81,7 @@ class _FormloginState extends State<Formlogin> {
                       Container(
                         margin: EdgeInsets.fromLTRB(20, 10, 20, 0),
                         child: TextFormField(
-                          controller: emailcontroller,
+                          // controller: emailcontroller,
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.email),
                             hintText: "Masukkan Email Anda",
@@ -109,7 +108,7 @@ class _FormloginState extends State<Formlogin> {
                       Container(
                         margin: EdgeInsets.fromLTRB(20, 10, 20, 0),
                         child: TextFormField(
-                          controller: passwordcontroller,
+                          // controller: passwordcontroller,
                           obscureText: true,
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.key),
@@ -170,17 +169,17 @@ class _FormloginState extends State<Formlogin> {
                                       actions: [
                                         TextButton(
                                           onPressed: () {
-                                            context.push(
-                                              Tugashome(
-                                                password:
-                                                    passwordcontroller.text,
-                                                email: emailcontroller.text,
-                                              ),
-                                            );
-                                            // Navigator.pushNamed(
-                                            //   context,
-                                            //   "/latihnavbar",
+                                            // context.push(
+                                            //   Tugashome(
+                                            //     password:
+                                            //         passwordcontroller.text,
+                                            //     email: emailcontroller.text,
+                                            //   ),
                                             // );
+                                            Navigator.pushNamed(
+                                              context,
+                                              "/latihnavbar",
+                                            );
                                           },
                                           child: Text("Lanjut"),
                                         ),
@@ -262,9 +261,14 @@ class _FormloginState extends State<Formlogin> {
                             children: [
                               TextSpan(
                                 recognizer: TapGestureRecognizer()
-                                  ..onTap = () => Navigator.pop(context),
+                                  ..onTap = () => Navigator.push(
+                                    context, MaterialPageRoute(builder: (context) => LamanRegistrasi()),
+                                  ),
                                 text: " Create an account",
-                                style: TextStyle(color: Color(0xFF7C9A92)),
+                                style: TextStyle(
+                                  color: Color(0xFF7C9A92),
+                                  decoration: TextDecoration.underline,
+                                ),
                               ),
                             ],
                           ),
