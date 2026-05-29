@@ -13,7 +13,6 @@ class Tugashome extends StatefulWidget {
 
   static const String routeName = "/controller";
 
-
   @override
   State<Tugashome> createState() => _TugashomeState();
 }

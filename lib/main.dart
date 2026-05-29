@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:latihan_flutter_dasar/database/preferences_handler.dart';
 import 'package:latihan_flutter_dasar/formLogin.dart';
-import 'package:latihan_flutter_dasar/latihan7dan8Flutter.dart';
+import 'package:latihan_flutter_dasar/views/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDateFormatting('id_ID', null);
-
+  await PreferencesHandler.init();
   runApp(const MyApp());
 }
 
@@ -38,12 +39,13 @@ class MyApp extends StatelessWidget {
         colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
       // home: formLogin(),
-      initialRoute: Formlogin.routeName,
-
+      initialRoute: "/",
       routes: {
-        Formlogin.routeName: (context) => const Formlogin(),
-        // Formlanding.routeName: (context) => const Formlanding(),
-        NavigasiDrawer.routeName: (context) => const NavigasiDrawer(),
+        '/': (context) => SplashScreen(),
+        '/login': (context) => Formlogin(),
+        // Formlogin.routeName: (context) => const Formlogin(),
+        // // Formlanding.routeName: (context) => const Formlanding(),
+        // NavigasiDrawer.routeName: (context) => const NavigasiDrawer(),
       },
     );
   }

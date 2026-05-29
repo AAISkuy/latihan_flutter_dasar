@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:latihan_flutter_dasar/HomePage.dart';
+import 'package:latihan_flutter_dasar/database/preferences_handler.dart';
+import 'package:latihan_flutter_dasar/extension/extension.dart';
+import 'package:latihan_flutter_dasar/formLogin.dart';
 import 'package:latihan_flutter_dasar/views/list.dart';
 import 'package:latihan_flutter_dasar/views/list_with_map.dart';
 import 'package:latihan_flutter_dasar/views/list_with_model.dart';
@@ -129,6 +132,23 @@ class NavigasiDrawerState extends State<NavigasiDrawer> {
               selected: _selectedIndex == 3,
               onTap: () {
                 _onDrawerTapped(3);
+              },
+            ),
+
+            ListTile(
+              leading: const Icon(Icons.exit_to_app),
+              title: const Text(
+                "Log out",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              selected: _selectedIndex == 4,
+              onTap: () {
+                _onDrawerTapped(4);
+                PreferencesHandler.logOut();
+                context.pushAndRemoveAll(Formlogin());
               },
             ),
           ],

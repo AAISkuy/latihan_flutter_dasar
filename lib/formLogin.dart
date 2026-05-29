@@ -1,6 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:latihan_flutter_dasar/Registrasi.dart';
+import 'package:latihan_flutter_dasar/Tugashome10.dart';
+import 'package:latihan_flutter_dasar/database/preferences_handler.dart';
 
 class Formlogin extends StatefulWidget {
   const Formlogin({super.key});
@@ -12,8 +14,9 @@ class Formlogin extends StatefulWidget {
 
 class _FormloginState extends State<Formlogin> {
   final _formKey = GlobalKey<FormState>();
-  // final emailcontroller = TextEditingController();
-  // final passwordcontroller = TextEditingController();
+  final namacontroller = TextEditingController();
+  final emailcontroller = TextEditingController();
+  final passwordcontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +84,7 @@ class _FormloginState extends State<Formlogin> {
                       Container(
                         margin: EdgeInsets.fromLTRB(20, 10, 20, 0),
                         child: TextFormField(
-                          // controller: emailcontroller,
+                          controller: emailcontroller,
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.email),
                             hintText: "Masukkan Email Anda",
@@ -108,7 +111,7 @@ class _FormloginState extends State<Formlogin> {
                       Container(
                         margin: EdgeInsets.fromLTRB(20, 10, 20, 0),
                         child: TextFormField(
-                          // controller: passwordcontroller,
+                          controller: passwordcontroller,
                           obscureText: true,
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.key),
@@ -168,7 +171,21 @@ class _FormloginState extends State<Formlogin> {
                                       content: Text("Anda berhasil login"),
                                       actions: [
                                         TextButton(
-                                          onPressed: () {
+                                          onPressed: () async {
+                                            await PreferencesHandler.setLogin(
+                                              true,
+                                            );
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) => Tugashome(
+                                                  nama: namacontroller.text,
+                                                  email: emailcontroller.text,
+                                                  password:
+                                                      passwordcontroller.text,
+                                                ),
+                                              ),
+                                            );
                                             // context.push(
                                             //   Tugashome(
                                             //     password:
@@ -176,10 +193,10 @@ class _FormloginState extends State<Formlogin> {
                                             //     email: emailcontroller.text,
                                             //   ),
                                             // );
-                                            Navigator.pushNamed(
-                                              context,
-                                              "/latihnavbar",
-                                            );
+                                            // Navigator.pushNamed(
+                                            //   context,
+                                            //   "/latihnavbar",
+                                            // );
                                           },
                                           child: Text("Lanjut"),
                                         ),
@@ -262,7 +279,10 @@ class _FormloginState extends State<Formlogin> {
                               TextSpan(
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () => Navigator.push(
-                                    context, MaterialPageRoute(builder: (context) => LamanRegistrasi()),
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => LamanRegistrasi(),
+                                    ),
                                   ),
                                 text: " Create an account",
                                 style: TextStyle(
