@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:latihan_flutter_dasar/Tugashome10.dart';
 import 'package:latihan_flutter_dasar/database/preferences_handler.dart';
 import 'package:latihan_flutter_dasar/extension/extension.dart';
 import 'package:latihan_flutter_dasar/formLogin.dart';
-import 'package:latihan_flutter_dasar/latihan7dan8Flutter.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -22,9 +22,15 @@ class Splash_Screen extends State<SplashScreen> {
     await Future.delayed(Duration(seconds: 3));
     if (!mounted) return;
     if (PreferencesHandler.isLogin) {
-      context.pushAndRemoveAll(NavigasiDrawer());
+      context.pushAndRemoveAll(
+        Tugashome(
+          nama: PreferencesHandler.nama,
+          email: PreferencesHandler.email,
+          password: PreferencesHandler.password,
+        ),
+      );
     } else {
-      context.pushAndRemoveAll(Formlogin());
+      context.pushAndRemoveAll(const Formlogin());
     }
   }
 
