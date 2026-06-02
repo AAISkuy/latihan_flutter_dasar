@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:latihan_flutter_dasar/Registrasi.dart';
-import 'package:latihan_flutter_dasar/Tugashome10.dart';
+import 'package:latihan_flutter_dasar/daftarpengguna.dart';
 import 'package:latihan_flutter_dasar/database/databasehelper.dart';
 import 'package:latihan_flutter_dasar/database/preferences_handler.dart';
 import 'package:latihan_flutter_dasar/extension/extension.dart';
@@ -37,7 +37,7 @@ class _FormloginState extends State<Formlogin> {
     if (!mounted) return;
 
     if (pengguna != null) {
-      context.pushAndRemoveAll(Tugashome());
+      context.pushAndRemoveAll(UserList());
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
@@ -207,12 +207,8 @@ class _FormloginState extends State<Formlogin> {
                                             Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                builder: (context) => Tugashome(
-                                                  nama: namacontroller.text,
-                                                  email: emailcontroller.text,
-                                                  password:
-                                                      passwordcontroller.text,
-                                                ),
+                                                builder: (context) =>
+                                                    UserList(),
                                               ),
                                             );
                                             // context.push(

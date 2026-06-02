@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:latihan_flutter_dasar/Tugashome10.dart';
+import 'package:latihan_flutter_dasar/daftarpengguna.dart';
 import 'package:latihan_flutter_dasar/database/databasehelper.dart';
 import 'package:latihan_flutter_dasar/database/preferences_handler.dart';
 import 'package:latihan_flutter_dasar/extension/extension.dart';
@@ -291,14 +291,7 @@ class Laman_RegistrasiState extends State<LamanRegistrasi> {
                                               email: emailcontroller.text,
                                               password: passwordcontroller.text,
                                             );
-                                            context.push(
-                                              Tugashome(
-                                                nama: namacontroller.text,
-                                                password:
-                                                    passwordcontroller.text,
-                                                email: emailcontroller.text,
-                                              ),
-                                            );
+                                            context.push(UserList());
                                             // Navigator.pushNamed(
                                             //   context,
                                             //   "/Controller",
@@ -337,7 +330,7 @@ class Laman_RegistrasiState extends State<LamanRegistrasi> {
                                   ..onTap = () => Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => LamanRegistrasi(),
+                                      builder: (context) => Formlogin(),
                                     ),
                                   ),
                                 text: " Log In",
