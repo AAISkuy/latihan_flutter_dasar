@@ -2,11 +2,13 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:latihan_flutter_dasar/Registrasi.dart';
 import 'package:latihan_flutter_dasar/Tugashome10.dart';
+import 'package:latihan_flutter_dasar/database/databasehelper.dart';
 import 'package:latihan_flutter_dasar/database/preferences_handler.dart';
+import 'package:latihan_flutter_dasar/extension/extension.dart';
+import 'package:latihan_flutter_dasar/models/user_model_sql.dart';
 
 class Formlogin extends StatefulWidget {
   const Formlogin({super.key});
-  static const String routeName = "/signin";
 
   @override
   State<Formlogin> createState() => _FormloginState();
@@ -14,9 +16,36 @@ class Formlogin extends StatefulWidget {
 
 class _FormloginState extends State<Formlogin> {
   final _formKey = GlobalKey<FormState>();
-  final namacontroller = TextEditingController();
-  final emailcontroller = TextEditingController();
-  final passwordcontroller = TextEditingController();
+  final TextEditingController namacontroller = TextEditingController();
+  final TextEditingController emailcontroller = TextEditingController();
+  final TextEditingController passwordcontroller = TextEditingController();
+  void login() async {
+    final email = emailcontroller.text.trim();
+    final pass = passwordcontroller.text.trim();
+
+    if (email.isEmpty || pass.isEmpty) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Harap mengisi semua form')));
+      return;
+    }
+
+    final pengguna = await DBHelper().loginUser(
+      UserModelSql(email: email, password: pass),
+    );
+
+    if (!mounted) return;
+
+    if (pengguna != null) {
+      context.pushAndRemoveAll(Tugashome());
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("Login gagal. Email atau Password salah."),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

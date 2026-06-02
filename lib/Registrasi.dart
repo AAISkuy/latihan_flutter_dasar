@@ -1,11 +1,14 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:latihan_flutter_dasar/Tugashome10.dart';
+import 'package:latihan_flutter_dasar/database/databasehelper.dart';
 import 'package:latihan_flutter_dasar/database/preferences_handler.dart';
 import 'package:latihan_flutter_dasar/extension/extension.dart';
+import 'package:latihan_flutter_dasar/formLogin.dart';
+import 'package:latihan_flutter_dasar/models/user_model_sql.dart';
 
 class LamanRegistrasi extends StatefulWidget {
   const LamanRegistrasi({super.key});
-  static const String routeName = '/lamanregistrasi';
 
   @override
   State<LamanRegistrasi> createState() => Laman_RegistrasiState();
@@ -13,9 +16,37 @@ class LamanRegistrasi extends StatefulWidget {
 
 class Laman_RegistrasiState extends State<LamanRegistrasi> {
   final _formKey = GlobalKey<FormState>();
-  final namacontroller = TextEditingController();
-  final emailcontroller = TextEditingController();
-  final passwordcontroller = TextEditingController();
+  final TextEditingController namacontroller = TextEditingController();
+  final TextEditingController emailcontroller = TextEditingController();
+  final TextEditingController passwordcontroller = TextEditingController();
+  void register() async {
+    final nama = namacontroller.text.trim();
+    final email = emailcontroller.text.trim();
+    final pass = passwordcontroller.text.trim();
+
+    if (nama.isEmpty || email.isEmpty || pass.isEmpty) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(const SnackBar(content: Text('Mohon mengisi semua form')));
+      return;
+    }
+
+    final user = UserModelSql(nama: nama, email: email, password: pass);
+    bool succes = await DBHelper().registerUser(user);
+
+    if (!mounted) return;
+
+    if (succes) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Yeay Akun anda berhasil dibuat')),
+      );
+      context.push(Formlogin());
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Akun anda sudah terdaftar")),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -290,6 +321,32 @@ class Laman_RegistrasiState extends State<LamanRegistrasi> {
                               "Sign Up",
                               style: TextStyle(color: Colors.white),
                             ),
+                          ),
+                        ),
+                      ),
+
+                      SizedBox(height: 20),
+
+                      Center(
+                        child: Text.rich(
+                          TextSpan(
+                            text: "Already have an Account? ",
+                            children: [
+                              TextSpan(
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => LamanRegistrasi(),
+                                    ),
+                                  ),
+                                text: " Log In",
+                                style: TextStyle(
+                                  color: Color(0xFF7C9A92),
+                                  decoration: TextDecoration.underline,
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
