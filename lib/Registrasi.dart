@@ -161,7 +161,7 @@ class Laman_RegistrasiState extends State<LamanRegistrasi> {
                           controller: emailcontroller,
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.email),
-                            hintText: "Priasawit@gmail.com",
+                            hintText: "example@gmail.com",
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide(color: Color(0xFF7C9A92)),
                               borderRadius: BorderRadius.circular(12),
