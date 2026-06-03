@@ -59,8 +59,9 @@ class _MyWidgetState extends State<UserList> {
                     return Card(
                       child: ListTile(
                         leading: const CircleAvatar(child: Icon(Icons.person)),
-                        title: Text(user.email),
-                        subtitle: Text('Password: ${user.password}'),
+                        title: Text(user.nama ?? '-'),
+                        subtitle: Text(user.email),
+                        // subtitle: Text('Password: ${user.password}'),
                         trailing: IconButton(
                           icon: const Icon(
                             Icons.edit_document,
