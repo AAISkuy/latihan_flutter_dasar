@@ -1,4 +1,4 @@
-import 'package:latihan_flutter_dasar/models/skincare_models.dart';
+import 'package:latihan_flutter_dasar/latihan/skincare_models.dart';
 
 List<SkincareModel> skincareListWithModels = const [
   SkincareModel(

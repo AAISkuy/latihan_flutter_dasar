@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:latihan_flutter_dasar/data/Skincare_data_with_models.dart';
+import 'package:latihan_flutter_dasar/latihan/data/Skincare_data_with_models.dart';
+import 'package:latihan_flutter_dasar/latihan/data/Skincare_list.dart';
 
-class ListWithModelDataSkin extends StatefulWidget {
-  const ListWithModelDataSkin({super.key});
+class ListWithMapDataSkin extends StatefulWidget {
+  const ListWithMapDataSkin({super.key});
 
   @override
-  State<ListWithModelDataSkin> createState() => _ListWithModelDataSkinState();
+  State<ListWithMapDataSkin> createState() => _ListWithModelDataSkinState();
 }
 
-class _ListWithModelDataSkinState extends State<ListWithModelDataSkin> {
+class _ListWithModelDataSkinState extends State<ListWithMapDataSkin> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,18 +25,13 @@ class _ListWithModelDataSkinState extends State<ListWithModelDataSkin> {
             ),
             itemCount: skincareListWithModels.length,
             itemBuilder: (BuildContext context, int index) {
-              final data = skincareListWithModels[index];
               return Container(
                 color: index % 2 == 0 ? Colors.blue : Colors.red,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.spa, size: 30, color: Color(0xFFFADADD)),
-
-                    const SizedBox(height: 6),
-
                     Text(
-                      data.brand,
+                      skincareList[index]['brand'],
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         fontSize: 18,
@@ -43,35 +39,23 @@ class _ListWithModelDataSkinState extends State<ListWithModelDataSkin> {
                       ),
                     ),
 
-                    const SizedBox(height: 5),
+                    const SizedBox(height: 6),
 
                     Text(
-                      data.productName,
+                      skincareList[index]['category'],
                       textAlign: TextAlign.center,
                       style: const TextStyle(fontSize: 14),
                     ),
 
-                    const SizedBox(height: 5),
+                    const SizedBox(height: 6),
 
                     Text(
-                      data.category,
+                      skincareList[index]['benefit'],
                       style: const TextStyle(
-                        fontSize: 10,
+                        fontSize: 13,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-
-                    Text(
-                      data.benefit,
-                      style: const TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-
-                    const SizedBox(height: 5),
-
-                    Text(data.skinType, style: const TextStyle(fontSize: 12)),
                   ],
                 ),
               );

@@ -1,9 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:latihan_flutter_dasar/Registrasi.dart';
-import 'package:latihan_flutter_dasar/daftarpengguna.dart';
+import 'package:latihan_flutter_dasar/Project/Registrasi.dart';
+import 'package:latihan_flutter_dasar/Project/daftarpengguna.dart';
 import 'package:latihan_flutter_dasar/database/databasehelper.dart';
-import 'package:latihan_flutter_dasar/database/preferences_handler.dart';
 import 'package:latihan_flutter_dasar/extension/extension.dart';
 import 'package:latihan_flutter_dasar/models/user_model_sql.dart';
 
@@ -191,44 +190,45 @@ class _FormloginState extends State<Formlogin> {
                           child: ElevatedButton(
                             onPressed: () {
                               if (_formKey.currentState!.validate()) {
-                                print("Sudah memenuhi syarat");
-                                showDialog(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return AlertDialog(
-                                      title: Text("Berhasil"),
-                                      content: Text("Anda berhasil login"),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () async {
-                                            await PreferencesHandler.setLogin(
-                                              true,
-                                            );
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    UserList(),
-                                              ),
-                                            );
-                                            // context.push(
-                                            //   Tugashome(
-                                            //     password:
-                                            //         passwordcontroller.text,
-                                            //     email: emailcontroller.text,
-                                            //   ),
-                                            // );
-                                            // Navigator.pushNamed(
-                                            //   context,
-                                            //   "/latihnavbar",
-                                            // );
-                                          },
-                                          child: Text("Lanjut"),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                );
+                                login();
+                                // print("Sudah memenuhi syarat");
+                                // showDialog(
+                                //   context: context,
+                                //   builder: (BuildContext context) {
+                                // return AlertDialog(
+                                //   title: Text("Berhasil"),
+                                //   content: Text("Anda berhasil login"),
+                                //   actions: [
+                                //     TextButton(
+                                //       onPressed: () async {
+                                //         await PreferencesHandler.setLogin(
+                                //           true,
+                                //         );
+                                // Navigator.pushReplacement(
+                                //   context,
+                                //   MaterialPageRoute(
+                                //     builder: (context) =>
+                                //         UserList(),
+                                //   ),
+                                // );
+                                // context.push(
+                                //   Tugashome(
+                                //     password:
+                                //         passwordcontroller.text,
+                                //     email: emailcontroller.text,
+                                //   ),
+                                // );
+                                // Navigator.pushNamed(
+                                //   context,
+                                //   "/latihnavbar",
+                                // );
+                                // },
+                                // child: Text("Lanjut"),
+                                //     ),
+                                //   ],
+                                // );
+                                // },
+                                // );
                               }
                             },
 

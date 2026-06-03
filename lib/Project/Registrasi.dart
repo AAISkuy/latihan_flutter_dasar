@@ -1,10 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:latihan_flutter_dasar/daftarpengguna.dart';
+import 'package:latihan_flutter_dasar/Project/formLogin.dart';
 import 'package:latihan_flutter_dasar/database/databasehelper.dart';
-import 'package:latihan_flutter_dasar/database/preferences_handler.dart';
 import 'package:latihan_flutter_dasar/extension/extension.dart';
-import 'package:latihan_flutter_dasar/formLogin.dart';
 import 'package:latihan_flutter_dasar/models/user_model_sql.dart';
 
 class LamanRegistrasi extends StatefulWidget {
@@ -281,22 +279,23 @@ class Laman_RegistrasiState extends State<LamanRegistrasi> {
                                       content: Text("Anda berhasil Mendaftar"),
                                       actions: [
                                         TextButton(
-                                          onPressed: () async {
-                                            await PreferencesHandler.setLogin(
-                                              true,
-                                            );
+                                          onPressed: register,
+                                          // () async {
+                                          //   await PreferencesHandler.reg(
+                                          //     true,
+                                          //   );
 
-                                            await PreferencesHandler.saveUser(
-                                              nama: namacontroller.text,
-                                              email: emailcontroller.text,
-                                              password: passwordcontroller.text,
-                                            );
-                                            context.push(UserList());
-                                            // Navigator.pushNamed(
-                                            //   context,
-                                            //   "/Controller",
-                                            // );
-                                          },
+                                          // await PreferencesHandler.saveUser(
+                                          //   nama: namacontroller.text,
+                                          //   email: emailcontroller.text,
+                                          //   password: passwordcontroller.text,
+                                          // );
+                                          // context.push(Formlogin());
+                                          // Navigator.pushNamed(
+                                          //   context,
+                                          //   "/Controller",
+                                          // );
+                                          // },
                                           child: Text("Lanjut"),
                                         ),
                                       ],
